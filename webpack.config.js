@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
     entry: {
         main: path.resolve('./index.js'),
-        'global': glob.sync('./assets/scss/global.scss'),
+        'global': glob.sync('./assets/scss/_global.scss'),
         'component': glob.sync('./components/**/*.scss'),
     },
 
