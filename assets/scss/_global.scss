@@ -1,0 +1,222 @@
+/*
+    Global Styles
+        - Contains global styles and resets.
+*/
+
+@import "bundle";
+@import "carousel";
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+*:focus {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: 1px solid $primary-color;
+}
+
+html {
+    font-size: $root-font-size;
+}
+
+body {
+    font-family: $font-family;
+    font-size: rem(16);
+    line-height: 1.5;
+    margin: 0;
+    min-width: #{ $min-content-width / $root-font-size }rem;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: $primary-color;
+
+    &:hover,
+    &:active {
+        color: $primary-color;
+        text-decoration: underline;
+        
+        @include max($lg) {
+            color: $white;
+        }
+    }
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 1 */
+    line-height: 1.15; /* 1 */
+    margin: 0; /* 2 */
+    background-color: transparent;
+    border: none;
+    text-transform: none;
+    color: $black;
+
+    &:hover, 
+    &:active {
+        @include max($lg) {
+            color: $primary-color;
+        }
+    }
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+}
+
+button:hover,
+button:focus {
+    background: transparent;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: 0.025em;
+    margin: 0;
+}
+
+h1 {
+    font-size: rem(60);
+
+    @include max($lg) {
+        font-size: rem(42);
+    }
+}
+
+h2 {
+    font-size: rem(48);
+
+    @include max($lg) {
+        font-size: rem(36);
+    }
+}
+
+h3 {
+    font-size: rem(36);
+
+    @include max($lg) {
+        font-size: rem(30);
+    }
+}
+
+h4 {
+    font-size: rem(28);
+
+    @include max($lg) {
+        font-size: rem(24);
+    }
+}
+
+h5 {
+    font-size: rem(20);
+
+    @include max($lg) {
+        font-size: rem(20);
+    }
+}
+
+h6 {
+    font-size: rem(16);
+
+    @include max($lg) {
+        font-size: rem(16);
+    }
+}
+
+input {
+    font-family: inherit;
+    
+    &:-webkit-autofill  {
+        background: none;
+        background-color: transparent!important;
+    }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: rem(1) solid $primary-color;
+  -webkit-text-fill-color: $white;
+  box-shadow: 0 0 0 rem(1000) $color-gray-85 inset;
+  -webkit-box-shadow: 0 0 0 rem(1000) $color-gray-85 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+ol, ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+figure {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: #{ $max-content-width / $root-font-size }rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: rem(64) rem(30);
+}
+
+.icon {
+    fill: $white;
+    width: 22px;
+    height: 22px;
+
+    &:hover,
+    &:focus {
+        fill: $primary-color;
+        opacity: 1;
+    }
+}
+
+// Utility Classes
+.is-desktop-only {
+    display: none;
+
+    @include min($lg) {
+        display: block;
+    }
+}
+
+.is-mobile-only {
+    display: none;
+
+    @include max($lg) {
+        display: flex;
+    }
+}

@@ -1,0 +1,129 @@
+/*
+    Mixins
+        - Helper mixins that can be leveraged when writing new styles.
+
+    [TABLE OF CONTENTS]
+        - aspect-ratio
+        - between
+        - if
+        - max
+        - min
+*/
+
+/*
+    aspect-ratio
+        - Allows you to force an element to resize according to a specified aspect ratio.
+
+    [EXAMPLE]
+        .foo {
+            @include aspect-ratio(16,9)
+        }
+*/
+@mixin aspect-ratio($width, $height) {
+    width: 100%;
+    height: 0;
+    padding-bottom: #{ ($height / $width) * 100 } + "%";
+}
+
+/*
+    between
+        - Outputs styles that will only take effect within the min and max width values that are passed in. Note that it's up to, but not including, the max value.
+
+    EXAMPLE
+        @include between(768, 1024) {
+            padding: 20px;
+        }
+*/
+@mixin between($min, $max) {
+    @media screen and (min-width: #{ $min }px) and (max-width: #{ $max - 1 }px) {
+        @content;
+    }
+}
+
+/*
+    if
+        - Conditionally applies styles based on the number of sibling elements that are present.
+
+    [EXAMPLE]
+        li {
+            @include if(3) {
+                color: red;
+            }
+        }
+
+        <!-- the above styling will be applied here, since there are 3 elements -->
+        <ul>
+            <li>Apples</li>
+            <li>Oranges</li>
+            <li>Bananas</li>
+        </ul>
+
+        <!-- the above styling will NOT be applied here, since there are only 2 elements -->
+        <ul>
+            <li>Apples</li>
+            <li>Oranges</li>
+        </ul>
+*/
+@mixin if($args...) {
+    @each $arg in $args {
+        @if type-of($arg) == number {
+           @for $i from 1 through $arg {
+              &:nth-of-type(#{$i}):nth-last-of-type(#{$arg - $i + 1}) {
+                 @content;
+              }
+           }
+        }
+     }
+}
+
+/*
+
+    max
+        - Outputs styles that will only take effect if the site width is less than or equal to the number of pixels passed in.
+
+    [EXAMPLE]
+        @include max(1023) {
+            padding: 20px;
+        }
+
+*/
+@mixin max($breakpoint) {
+    @media screen and (max-width: #{ $breakpoint - 1 }px) {
+        @content;
+    }
+}
+
+/*
+
+    min
+        - Outputs styles that will only take effect if the site width is greater than or equal to the number of pixels passed in.
+
+    [EXAMPLE]
+        @include min(1024) {
+            padding: 20px;
+        }
+
+*/
+@mixin min($breakpoint) {
+    @media screen and (min-width: #{ $breakpoint }px) {
+        @content;
+    }
+}
+
+
+/*
+
+    gradient
+        - Outputs styles that will display a background gradient using the direction and colors passed into it.
+
+    [EXAMPLE]
+        @include gradient(45deg, $gradient-1);
+
+*/
+
+@mixin gradient($direction, $colors) {
+    background: -webkit-linear-gradient($direction, $colors);
+    background: -moz-linear-gradient($direction, $colors);
+    background: -o-linear-gradient($direction, $colors);
+    background: linear-gradient($direction, $colors);
+}

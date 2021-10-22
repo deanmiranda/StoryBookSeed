@@ -1,0 +1,10 @@
+.cache
+.env
+**/.DS_Store
+*.log
+.eslintcache
+coverage
+dist
+node_modules
+storybook-static
+yarn-error.log

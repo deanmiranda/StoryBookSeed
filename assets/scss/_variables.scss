@@ -1,0 +1,118 @@
+@font-face {
+    font-family: "Example Basis";
+    src: url("/fonts/ExampleVF-VF.woff2") format("woff2 supports variations"),
+         url("/fonts/ExampleVF-VF.woff2") format("woff2-variations");
+    font-weight: 300 700;
+    font-display: swap;
+}
+
+$font-family: "Example Basis", Times, "Helvetica", "Arial", sans-serif !default;
+
+$font-size-small: 0.75rem !default;
+$font-size-small-2: 0.875rem !default;
+$font-size-med: 1rem !default;
+$font-size-med-2: 1.0625rem !default;
+$font-size-large: 1.4375rem !default;
+
+$root-font-size: 16;
+
+// layout
+$min-content-width: 320;
+$max-content-width: 1440;
+$max-content-padding-horizontal: 30;
+$max-content-padding-vertical: 64;
+
+// colors
+$black: #000;
+$focus-outline-color: #8c8c8c;
+$primary-color: #e60177;
+$white: #fff;
+$color-error: #ff5151;
+
+$color-gray-05: #f2f2f2 !default;
+$color-gray-10: #e6e6e6 !default;
+$color-gray-25: #bfbfbf !default;
+$color-gray-45: #8c8c8c !default;
+$color-gray-70: #4d4d4d !default;
+$color-gray-85: #262626 !default;
+
+
+/**
+ * Gradient Colors
+ */
+ $color-purple: #bd03f7 !default;
+ $color-red: #e81245 !default;
+ $color-yellow: #fdd501 !default;
+ $color-blue-light: #0068ff;
+ $color-blue-normal: #3539f4;
+ $color-blue-dark: #1a1cfa;
+ $color-green: #01ab01;
+ 
+ $gradient-1: $color-purple, $color-red, $primary-color;
+ $gradient-2: $primary-color, $color-yellow;
+ $gradient-3: $color-purple, $color-blue-normal, $color-blue-light;
+ $gradient-4: $color-blue-dark, $color-blue-light, $color-green;
+ 
+ /*
+ * Data Visualization
+ */
+ // blue
+ $color-blue-a: #2044ff;
+ $color-blue-b: #32c8ff;
+ $color-blue-c: #96fafc;
+ 
+ // purple
+ $color-purple-a: #bd03f7;
+ $color-purple-b: #ff8cff;
+ $color-purple-c: #fccafa;
+ 
+ // gold
+ $color-gold-a: #ff4f11;
+ $color-gold-b: #ffbe1e;
+ $color-gold-c: #ffec32;
+ 
+ // green
+ $color-green-a: #01ab01;
+ $color-green-b: #78f05a;
+ $color-green-c: #b6fcb4;
+ 
+ .bg-gradient-1 {
+     @include gradient(45deg, $gradient-1);
+ }
+ 
+ .bg-gradient-2 {
+     @include gradient(45deg, $gradient-2);
+ }
+ 
+ .bg-gradient-3 {
+     @include gradient(45deg, $gradient-3);
+ }
+ 
+ .bg-gradient-4 {
+     @include gradient(45deg, $gradient-4);
+ }
+ 
+// Breakpoints for screensizes
+$tiny: 320;
+$xs: 415;
+$sm: 576;
+$md: 768;
+$lg: 1024;
+$xl: 1210;
+$xxl: 1440;
+
+$to-tiny: 319;
+$to-xs: 414;
+$to-sm: 575;
+$to-md: 767;
+$to-lg: 1023;
+$to-xl: 1209;
+$to-xxl: 1439;
+
+$contain: 1170;
+
+// Page layout
+$page-max-width: 1440px;
+
+// Layout
+$gutter-mobile: 20px;

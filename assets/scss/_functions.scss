@@ -1,0 +1,87 @@
+/*
+    Functions
+        - Helper functions that can be leveraged when writing new styles.
+
+    [TABLE OF CONTENTS]
+        - color-swap
+        - rem
+        - z
+*/
+
+/*
+    color-swap()
+        - Swaps a color to black or white, based on the HSL lightness value of the passed in color.
+        - The second argument allows you to lightness threshold to a different value.
+        - The third argument lets you select a color to use for black.
+        - The fourth argument lets you select a color to use for white.
+
+    [EXAMPLES]
+        .foo {
+            color: color-swap(black); // => color: white;
+        }
+
+        .bar {
+            color: color-swap(white); // => color: black;
+        }
+
+        .baz {
+            color: color-swap(black, 40, #111, #eee); // => color: #eee;
+        }
+
+        .quz {
+            color: color-swap(white, 40, #111, #eee); // => color: #111;
+        }
+*/
+@function color-swap($comparison-color, $threshold: 40, $dark-color: black, $light-color: white) {
+    @if (lightness($comparison-color) > $threshold) {
+        @return $dark-color;
+    } @else {
+        @return $light-color;
+    }
+}
+
+/*
+    rem()
+        - Allows you to easily convert from px units to rem without having to use a calculator.
+
+    [EXAMPLE]
+        .foo {
+            font-size: rem(36); // 2.25rem (assuming the document root is 16px)
+        }
+*/
+@function rem($px) {
+    @return #{ $px / 16 }rem;
+}
+
+/*
+
+    z()
+        - A helper function for controlling which layer an element should appear on. The goal is to avoid having a bunch of hard-coded and non-sensical z-index values populating the code base.
+        - There are (currently) four available layers represented by the numbers -1, 1, 2, and 3. The higher the number, the greater the precedence.
+        - If a non-supported numbers is passed in, then the returned z-index is 0.
+
+    [EXAMPLE]
+        z-index: z(3);   // z-index: 300
+        z-index: z(2);   // z-index: 200
+        z-index: z(1);   // z-index: 100
+        z-index: z(0);   // z-index: 0
+        z-index: z(-1);   // z-index: -1
+        z-index: z(-10); // z-index: 0
+        z-index: z(999); // z-index: 0
+
+*/
+@function z($layer) {
+    $number-of-allowed-layers: 3;
+
+    @for $i from 1 through $number-of-allowed-layers {
+        @if $layer == $i {
+            @return #{ $i }00;
+        }
+    }
+
+    @if $layer == -1 {
+        @return -1;
+    }
+
+    @return 0;
+}

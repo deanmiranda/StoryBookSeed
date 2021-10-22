@@ -1,0 +1,24 @@
+[data-carousel-container] {
+    overflow: hidden;
+    visibility: hidden;
+}
+
+[data-carousel-slides] {
+    display: flex;
+    position: relative;
+}
+
+[data-carousel-slide] {
+    &.has-fade-transition {
+        position: absolute;
+        opacity: 0;
+        z-index: z(-1);
+        transition: opacity 0.35s ease-in;
+
+        &.is-current {
+            position: relative;
+            opacity: 1;
+            z-index: auto;
+        }
+    }
+}

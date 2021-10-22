@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+echo "┏━━━ 🧱  Building Storybook Files ━━━━━━━━━━━━━━━━━━━"
+echo ""
+
+build-storybook -s ./static

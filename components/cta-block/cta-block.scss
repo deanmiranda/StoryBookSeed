@@ -1,0 +1,86 @@
+.cta-block {
+    $mobile-breakpoint: 1024;
+    $this: &;
+    padding-left: rem(64);
+    padding-right: rem(64);
+    background-color: $color-gray-05;
+
+    @include max($mobile-breakpoint) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    &__button {
+        @extend %button-transparent-gray;
+        margin-top: rem(32);
+        letter-spacing: 0.15em;
+    }
+    
+    &__container {
+        @extend %container;
+        align-items: center;
+        max-width: rem(1085);
+
+        #{ $this }.is-reversed & {
+            flex-direction: row-reverse;
+        }
+
+        @include max($mobile-breakpoint) {
+            flex-direction: column-reverse !important;
+        }
+    }
+
+    &__content {
+        width: 60%;
+        margin-top: rem(32);
+        padding-right: rem(16);
+
+        #{ $this }.is-reversed & {
+            padding-right: 0;
+            padding-left: rem(16);
+        }
+
+        @include max($mobile-breakpoint) {
+            padding-right: 0;
+            width: 100%;
+            margin-top: rem(20);
+
+            #{ $this }.is-reversed & {
+                padding-left: 0;
+            }
+        }
+    }
+
+    &__title {
+        font-size: rem(36);
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    &__description {
+        margin-top: rem(16);
+    }
+
+
+    &__media {
+        padding-left: rem(16);
+
+        #{ $this }.is-reversed & {
+            padding-left: 0;
+            padding-right: rem(16);
+        }
+
+        @include max($mobile-breakpoint) {
+            padding-left: 0;
+            width: 100%;
+
+            #{ $this }.is-reversed & {
+                padding-right: 0;
+            }
+        }
+    }
+
+    &__image {
+        border-radius: rem(8);
+    }
+}
