@@ -28,7 +28,7 @@ export function mdxBlueprint(componentName) {
 <br />
 
 **Jira Ticket**
-> https://xcentium.atlassian.net/browse/MCRN-##
+> https://atlassian.net/browse/MCRN-##
 
 <br/>
 
